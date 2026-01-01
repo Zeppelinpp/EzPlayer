@@ -263,6 +263,6 @@ MIT License - feel free to use and modify as you wish.
 
 <div align="center">
 
-Made with ❤️ for audio lovers
+Made with ❤️ for all Transcribers
 
 </div>
