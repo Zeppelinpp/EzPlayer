@@ -32,12 +32,13 @@ A lightweight, beautiful audio waveform player for macOS with A-B loop functiona
 ### Option 1: Build from Source (Recommended)
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/EzPlayer.git
    cd EzPlayer
    ```
-
 2. **Build the application**
+
    ```bash
    # Compile the Swift source
    swiftc -o EzPlayer Sources/main.swift \
@@ -45,11 +46,11 @@ A lightweight, beautiful audio waveform player for macOS with A-B loop functiona
      -framework SwiftUI \
      -framework AVFoundation \
      -framework Accelerate
-   
+
    # Create the app bundle
    mkdir -p EzPlayer.app/Contents/MacOS
    mv EzPlayer EzPlayer.app/Contents/MacOS/
-   
+
    # Create Info.plist
    cat > EzPlayer.app/Contents/Info.plist << 'EOF'
    <?xml version="1.0" encoding="UTF-8"?>
@@ -90,8 +91,8 @@ A lightweight, beautiful audio waveform player for macOS with A-B loop functiona
    </plist>
    EOF
    ```
-
 3. **Move to Applications (optional)**
+
    ```bash
    mv EzPlayer.app ~/Applications/
    ```
@@ -177,20 +178,20 @@ EzPlayer includes a Raycast script for quick access. Select an audio/video file 
 ### Setup Steps
 
 1. **Open Raycast Preferences** → Extensions → Script Commands
-
 2. **Add Script Directory**
+
    - Click "Add Directories"
    - Select `EzPlayer/Scripts/` folder
-
 3. **Configure the script** (if needed)
-   
+
    Edit `Scripts/ezplayer.sh` and update the `APP_PATH` variable:
+
    ```bash
    # Update to your EzPlayer.app location
    APP_PATH="$HOME/Applications/EzPlayer.app"
    ```
-
 4. **Grant permissions**
+
    - On first run, grant Finder automation permission when prompted
 
 ### Usage
@@ -204,18 +205,18 @@ EzPlayer includes a Raycast script for quick access. Select an audio/video file 
 
 ## ⌨️ Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Space` | Play / Pause |
+| Shortcut       | Action                            |
+| -------------- | --------------------------------- |
+| `Space`      | Play / Pause                      |
 | `Space × 2` | Jump to loop start (or beginning) |
-| `← / →` | Seek backward / forward 10s |
-| `⌘ ⇧ S` | Set loop **S**tart point |
-| `⌘ ⇧ E` | Set loop **E**nd point |
-| `⌘ ⇧ C` | **C**lear all loop markers |
-| `⌘ /` | Show keyboard shortcuts |
-| `⌘ ⇧ ?` | Show documentation |
-| `⌘ W` | Close window |
-| `⌘ Q` | Quit application |
+| `← / →`    | Seek backward / forward 10s       |
+| `⌘ ⇧ S`    | Set loop**S**tart point     |
+| `⌘ ⇧ E`    | Set loop**E**nd point       |
+| `⌘ ⇧ C`    | **C**lear all loop markers  |
+| `⌘ /`       | Show keyboard shortcuts           |
+| `⌘ ⇧ ?`    | Show documentation                |
+| `⌘ W`       | Close window                      |
+| `⌘ Q`       | Quit application                  |
 
 ## 🔁 Loop Playback Guide
 
@@ -234,42 +235,17 @@ The loop region is highlighted in yellow/orange on the waveform.
 ## 🎵 Supported Formats
 
 ### Audio (Direct Playback)
+
 - MP3, M4A, AAC
 - WAV, AIFF
 - FLAC (if system codec available)
 
 ### Video (Auto-converted to WAV)
+
 - MP4, M4V, MOV
 - MKV, WebM
 
 > Video conversion requires [FFmpeg](https://ffmpeg.org/). Install with: `brew install ffmpeg`
-
-## 📁 Project Structure
-
-```
-EzPlayer/
-├── Sources/
-│   └── main.swift      # Main application source
-├── Scripts/
-│   └── ezplayer.sh     # Raycast script for Finder integration
-├── EzPlayer.app/       # Built application (after build)
-├── EzPlayer.png        # Screenshot
-└── README.md
-```
-
-## 🎨 Theme
-
-EzPlayer uses the **Monokai Pro** color scheme:
-
-| Element | Color |
-|---------|-------|
-| Background | `#2D2A2E` |
-| Foreground | `#FCFCFA` |
-| Green (Played) | `#A9DC76` |
-| Yellow (Loop) | `#FFD866` |
-| Red (Start marker) | `#FF6188` |
-| Blue (End marker) | `#78DCE8` |
-| Orange (Time) | `#FC9867` |
 
 ## 🤝 Contributing
 
@@ -286,8 +262,7 @@ MIT License - feel free to use and modify as you wish.
 ---
 
 <div align="center">
-  
+
 Made with ❤️ for audio lovers
 
 </div>
-
