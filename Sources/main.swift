@@ -797,9 +797,9 @@ struct AudioPlayerView: View {
                             Image(nsImage: appIcon)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 42, height: 42)
+                            .frame(width: 42, height: 42)
                                 .cornerRadius(8)
-                                .shadow(color: MonokaiPro.green.opacity(0.3), radius: 4)
+                            .shadow(color: MonokaiPro.green.opacity(0.3), radius: 4)
                         }
                         
                         VStack(alignment: .leading, spacing: 2) {
@@ -979,6 +979,8 @@ class KeyboardHostingView<Content: View>: NSHostingView<Content> {
     var onSetLoopStart: (() -> Void)?
     var onSetLoopEnd: (() -> Void)?
     var onClearLoop: (() -> Void)?
+    var onSeekBackward: (() -> Void)?
+    var onSeekForward: (() -> Void)?
     
     private var lastSpaceTime: Date?
     private let doubleSpaceInterval: TimeInterval = 0.3
@@ -998,6 +1000,10 @@ class KeyboardHostingView<Content: View>: NSHostingView<Content> {
                 lastSpaceTime = now
                 onSpacePressed?()
             }
+        } else if event.keyCode == 123 { // Left arrow
+            onSeekBackward?()
+        } else if event.keyCode == 124 { // Right arrow
+            onSeekForward?()
         } else if flags == [.command, .shift] {
             // Command + Shift + S (Start)
             if event.charactersIgnoringModifiers?.lowercased() == "s" {
@@ -1074,6 +1080,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         hostingView.onClearLoop = { [weak self] in
             self?.audioManager.clearLoopMarkers()
+        }
+        hostingView.onSeekBackward = { [weak self] in
+            guard let self = self else { return }
+            self.audioManager.seek(to: max(0, self.audioManager.currentTime - 2))
+        }
+        hostingView.onSeekForward = { [weak self] in
+            guard let self = self else { return }
+            self.audioManager.seek(to: min(self.audioManager.duration, self.audioManager.currentTime + 2))
         }
         window.contentView = hostingView
         window.makeKeyAndOrderFront(nil)
