@@ -1,0 +1,15 @@
+# Build artifacts
+EzPlayer
+EzPlayer.exec
+EzPlayer.app/
+
+# macOS system files
+.DS_Store
+*.swp
+*~
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
